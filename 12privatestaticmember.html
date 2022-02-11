@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //static and private
+        //The static keyword defines a static method or property for a class, or a class static initialization block (see the link for more information about this usage). Neither static methods nor static properties can be called on instances of the class. Instead, they're called on the class itself.
+        //Static methods are often utility functions, such as functions to create or clone objects, whereas static properties are useful for caches
+        class cart{
+            item; //private --> #item cant use outside class will through an error
+            property1;
+            constructor(items = []) {
+            // inilization
+            this.items = Object.freeze(items);
+            this.property1 = "initialized";
+        }
+           
+
+            static name="cart class";
+            static methodfn(){
+                console.log("i am static function");
+            }
+
+            add(item) {
+            const state = [...this.items, item];
+            this.items = Object.freeze(state);
+            }
+            remove(id) {
+            const state = this.items.filter((item) => item.id !== id);
+            this.items = Object.freeze(state);
+             }
+
+            
+        }
+        const cart1 = new cart();
+        const hotdog = { id: "🌭", name: "Posh Dog", price: 399 };
+        cart1.add(hotdog);
+        console.log(cart1);
+        console.log(cart.name); //static member only can access by CLASS name
+        console.log(cart.methodfn());
+
+
+        //getter and setter
+            //1.getter:The get syntax binds an object property to a function that will be called when that property is looked up.
+            //{get prop() { /* ... */ } }
+            //{get [expression]() { /* ... */ } }
+            //This will create a pseudo-property latest for object obj, which will return the last array item in log.
+
+
+            const obj={log:['examaple','test'],get latest(){
+                if(this.log.length===0) return undefined;
+                return this.log[this.log.length-1];
+            }}
+            console.log(obj.latest);
+
+            //setter:The set syntax binds an object property to a function to be called when there is an attempt to set that property.
+            // {set prop(val) { . . . }}
+            // {set [expression](val) { . . . }}
+            // In JavaScript, a setter can be used to execute a function whenever a specified property is attempted to be changed. Setters are most often used in conjunction with getters to create a type of pseudo-property. It is not possible to simultaneously have a setter on a property that holds an actual value.
+           const language={
+               set current(name){
+                   this.log.push(name);
+
+               },log:[]
+           };
+
+           language.current='EN';
+           language.current='FA';
+           console.log(language.log);
+           console.log("====================");
+
+           //inheritance using extends an super
+           class Animal {
+                constructor(legs) {
+                    this.legs = legs;
+                }
+                walk() {
+                    console.log('walking on ' + this.legs + ' legs');
+                }
+            }
+
+            class Bird extends Animal {
+                constructor(legs, color) {
+                    super(legs);
+                    this.color = color;
+                }
+                fly() {
+                    console.log("flying");
+                }
+                getColor() {
+                    return this.color;
+                }
+            }
+
+            class dog extends Animal{
+                constructor(){
+                    super(4);
+                }
+                walk(){
+                    super.walk();
+                    console.log("go walking");
+                }
+            }
+
+            class elephant extends Animal {
+                constructor(legs,extrafeature) {
+                    super(legs);
+                    this.extrafeature=extrafeature;
+                }
+                specialfeature() {
+                    //super.walk();
+                    console.log("it has " + this.extrafeature);
+                }
+            }
+
+            let elep =new elephant(4,"trunk");
+            elep.walk();
+            elep.specialfeature();
+
+            let bingo= new dog();
+            bingo.walk();
+
+            let pegion = new Bird(2, "white");
+            console.log(pegion.getColor());
+
+            let bird = new Bird(2);
+
+            bird.walk();
+            bird.fly();
+           
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

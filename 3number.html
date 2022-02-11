@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //switch case
+      const number = 3;
+      let result;
+      switch (number) {
+        case 1: {
+          let text = "one";
+          result = text;
+          break;
+        }
+        case 2: {
+          let text = "two";
+          result = text;
+          break;
+        }
+        default:
+          result = "not matched";
+      }
+      console.log(result);
+
+      //numbers
+      const literalno = 1;
+      const literalno1 = "22";
+      console.log(literalno);
+      console.log(literalno1);
+      //type conversion
+      console.log(Number(99));
+      console.log(Number("999"));
+      console.log(Number("999px"));
+      console.log(33.33333 * 3);
+
+      //parsing to number
+      console.log(parseInt("55px"));
+      console.log(parseFloat("55.23px"));
+      console.log(10 + "999");
+      console.log(Number.isInteger(10.01));
+
+      // type checking number
+
+      console.log(typeof 99.66);
+      console.log(99 instanceof Number);
+      console.log(Number(99) instanceof Number);
+      console.log(new Number(99) instanceof Number);
+
+      // ***************Number in depth *********************
+      console.log((99.123).toFixed());
+      console.log((99.567).toFixed());
+      console.log(Number((99.567).toFixed()));
+      console.log(parseFloat((99.567).toFixed()));
+      // the Number() function in window object.
+      console.log((999.45).toPrecision(5));
+      console.log((999.45).toPrecision(3));
+      console.log(new Number(50).valueOf(10));
+    </script>
+  </head>
+  <body></body>
+</html>

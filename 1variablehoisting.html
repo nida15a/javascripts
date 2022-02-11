@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //declaration of variables
+      let a = 20;
+      console.log(a);
+      const info = { name: "nida", age: 26 };
+      console.log(info);
+      console.log(info.name);
+      info.name = "nida ansari";
+      console.log(info);
+
+      //hoisting:Hoisting is a JavaScript mechanism where variables and function declarations are moved
+      //to the top of their scope before code execution. Inevitably, this means that no matter where functions and variables are declared,
+      // they are moved to the top of their scope regardless of whether their scope is global or local.
+      // One of the benefits of hoisting is that it enables us to call functions before they appear in the code. JavaScript only hoists declarations, not initializations.
+      //===================================================
+
+      //block scope
+
+      let a1 = 10;
+      var b = 1;
+      {
+        console.log(b);
+      }
+      {
+        var c = 2;
+        console.log(c);
+      }
+      console.log(a1);
+    </script>
+  </head>
+
+  <body></body>
+</html>

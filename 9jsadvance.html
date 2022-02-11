@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //procedural programming:The procedural programming paradigm is where program code is divided up into procedures, discrete blocks of code that carry out a single task.
+        const cart=[];
+
+        const addToCart=(item)=>{
+            cart.push(item);
+        };
+
+        const removefromcart=(id)=>{
+            const index= cart.findIndex((item)=>{
+                return item.id===id;
+            });
+            cart.splice(index,1);
+        };
+
+        let hotDog = { id: "🌭", name: "hot dog", price: 399 };
+        addToCart(hotDog);
+        console.log(cart);
+
+        removefromcart("🌭");
+        console.log(cart);
+
+        //object literal and ecapsulation with OOPs
+        const cart1={ item1:[],add(item1){ this.item1.push(item1);},remove(id){
+            const index1=this.item1.findIndex((item1)=>{
+                return item1.id===id;
+            });
+            this.item1.splice(index1,1);
+        },};
+
+        let hotDog1 = { id: "🌭", name: "hot dog", price: 399 };
+        let pizza = { id: "🍕", name: "cheese pizza", price: 999 };
+        cart1.add(hotDog1);
+        cart1.add(pizza);
+        console.log(cart1);
+
+        cart1.remove("🌭");
+        console.log(cart1);
+
+        // object literal and factory functions for the abstraction , and reusability
+        //A factory function is a function that returns a new object. The following creates a person object named john:
+
+        let john={
+            firstName:'john',lastName:'doe',getfullname(){
+                return this.firstName+" "+this.lastName;
+            }
+        };
+        console.log(john.getfullname());
+        //duplicaty for another object
+        let jane={
+            firstName:'jane',lastName:'doe',getfullname(){
+                return this.firstName+" "+this.lastName;
+            }
+        };
+        console.log(jane.getfullname());
+
+        //The jane object has the same properties and method as the john object.
+
+        // The more object you want to create, the more duplicate code you need to copy.
+
+        // To avoid copying the same code all over again and again, you can develop a function that creates the person object:
+        
+        function createPerson(firstName,lastName){
+            return {
+                firstName:firstName,
+                lastName:lastName,
+                getfullname(){
+                    return this.firstName+ " "+this.lastName;
+                }
+            }
+        }
+        //When a function creates an object, it is called a factory function. The createPerson() is a factory function because it returns a new person object.
+        let john1=createPerson("john","doe");
+        let jane1=createPerson("jane","doe");
+        console.log(john1.getfullname());
+        console.log(jane1.getfullname());
+
+        //To avoid repeating the same getFullName() function in the memory, you can remove the getFullName() method from the person object:
+        function createPerson1(firstName, lastName) {
+            let person = Object.create(behavior);
+            person.firstName = firstName;
+            person.lastName = lastName;
+            return person;
+        };
+        const behavior = {
+            getFullName1() {
+                return this.firstName + ' ' + this.lastName;
+            }
+        };
+
+        // let john2 = createPerson1('John', 'Doe');
+        // let jane2 = createPerson1('Jane', 'Doe');
+        // john.getFullName = behavior.getFullName;
+        // jane.getFullName = behavior.getFullName;
+
+        // console.log(john.getFullName());
+        // console.log(jane.getFullName());
+
+        //It’ll more difficult if you have many methods and have to assign them manually.
+
+        //This is why the Object.create() method comes into play.
+        // The Object.create() method creates a new object using an existing object as the prototype of the new object:
+
+        // Object.create(proto, [propertiesObject])
+        let john3 = createPerson1('John', 'Doe'),
+            jane3 = createPerson1('Jane', 'Doe');
+
+        console.log(john3.getFullName1());
+        console.log(jane3.getFullName1());
+
+        //frozen state and immutable patterns
+        //The Object.freeze() method freezes an object. A frozen object can no longer be changed; freezing an object prevents new properties from being added to it, existing properties from being removed, prevents changing the enumerability, configurability, or writability of existing properties, and prevents the values of existing properties from being changed. In addition, freezing an object also prevents its prototype from being changed. freeze() returns the same object that was passed in.
+
+        const obj = {
+        prop: 42
+        };
+
+        Object.freeze(obj);
+
+        obj.prop = 33;
+        // Throws an error in strict mode
+
+        console.log(obj.prop);
+        // expected output: 42
+
+        //freezing arrays
+        let a = [0];
+        Object.freeze(a); // The array cannot be modified now.
+
+        a[0] = 1; // fails silently
+
+        // In strict mode such attempt will throw a TypeError
+        // function fail() {
+        // "use strict"
+        // a[0] = 1;
+        // }
+
+        // fail();
+
+        // Attempted to push
+        //a.push(2); // throws a TypeError
+
+        //What is "shallow freeze"?
+        //The result of calling Object.freeze(object) only applies to the immediate properties of object itself and will prevent future property addition, removal or value re-assignment operations only on object. If the value of those properties are objects themselves, those objects are not frozen and may be the target of property addition, removal or value re-assignment operations.
+        const employee = {
+        name: "Mayank",
+        designation: "Developer",
+        address: {
+            street: "Rohini",
+            city: "Delhi"
+        }
+        };
+
+        Object.freeze(employee);
+
+        employee.name = "Dummy"; // fails silently in non-strict mode
+        employee.address.city = "Noida"; // attributes of child object can be modified
+
+        console.log(employee.address.city) // Output: "Noida"
+    
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

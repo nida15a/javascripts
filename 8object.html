@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //object
+        const info={name:"nida",id:123,age:26,address:{flatno:1,city:"bhopal"},getinfo:function(){console.log(this.name+this.age);},};
+        console.log(info);
+        console.log(info.address.flatno);
+
+        let info1={name:"xyz",age:23};
+        let info2=info1;
+        console.log(info1);
+        console.log(info2);
+        console.log("--------");
+        info1.name="abc xyz";
+        console.log(info1);
+        console.log(info2);
+
+        //object properties and value
+        let personInfo = {
+        name: "Sarang Jain",
+        id: "xherd123",
+        age: 30,
+        getInfo: function () {
+            console.log(this.name + this.id);
+            console.log(this);
+            // this is recommended
+            let test = () => {
+            console.log(this);
+            };
+        },
+        getInfo2() {
+            console.log(this.name + this.id);
+        },
+        // we have to avoid arrow fn as a property method
+        getInfo3: () => {
+            // console.log(this.name + this.id);
+        },
+        "abc 123": "I am a valid property",
+        100: "I am also a valid property",
+        };
+        console.log(personInfo);
+        personInfo.getInfo();
+        personInfo.getInfo2();
+        personInfo.getInfo3();
+        console.log(personInfo["name"]);
+        console.log(personInfo["abc 123"]);
+        console.log(personInfo["100"]);
+        console.log("====================");
+        console.log(personInfo.getInfo2());
+
+        let myName = "sarang jain";
+        let myId = "x123";
+        let myage = 45;
+        let personInfo2 = {
+        name: myName,
+        myId: myId,
+        age: myage,
+        getInfo1: function () {
+            console.log(this.name, this.age);
+        },
+        };
+        console.log(personInfo2);
+        personInfo2.getInfo1();
+
+        // Object destructuring
+        let couurseInformation = {trainer: "sarang jain",id: "webTrainer",
+        phoneNo: 9405034908,
+        city: "pune",
+        currentCourse: "react-js",
+        multipleCourse: { JS: 15000,react: 15000,full: 20000,
+            jscontent: { 1: "baisc", 2: "advance", 3: "DOm" },
+        },
+        };
+        console.log(couurseInformation.multipleCourse.full);
+        console.log(couurseInformation.multipleCourse.jscontent[3]);
+        console.log("==================");
+
+        let { trainer, id, phoneNo, ...rest } = couurseInformation;
+        console.log(trainer);
+        console.log(id);
+        console.log(phoneNo);
+        console.log(rest);
+
+        //object property add and update
+        let ls={a:1,b:2,c:3,d:4};
+        console.log(ls);
+        ls.e=5;
+        console.log(ls);
+        ls.e=6;
+        console.log(ls);
+
+        //remove
+        delete ls.a;
+        console.log(ls);
+
+        //1) object property and value exist or not
+        let ls1={a:1,b:2,c:3,d:4};
+        let d=5;
+        if (ls.c==3){
+            console.log("hi");
+        };
+
+        for(let prop in ls1){
+            console.log(prop);
+            console.log(ls1[prop]);
+        };
+
+        //value exists
+        const ls2= Object.values(ls1);
+        console.log(ls2.includes(1));
+
+        //property check
+        console.log(Object.keys(ls1));
+
+        //combine
+        var obj1 = { one: 1, two: 2, three: 3 };
+        var obj2 = { four: 1, five: 2, six: 3 };
+        var combineObj = { ...obj1, ...obj2, name: "sarang jain", two: 20, one: 10 };
+        console.log(combineObj);
+
+        // Object cloinig and breaking shallow copy and deep copy
+        let courseInformation = {
+        trainer: "sarang jain",
+        id: "web trainer",
+        phoneNo: 7038757074,
+        city: "pune",
+        currentCourseName: "JS-react",
+        courseFees: { js: 15000, react: 15000, full: 30000 },
+        };
+
+        let couseinforef= courseInformation;
+        courseInformation.city="bhopal";
+        console.log(courseInformation);
+        console.log(couseinforef);
+        console.log("---------------");
+
+        //deep cloning
+        let deepcloning=JSON.parse(JSON.stringify(courseInformation));
+        deepcloning.city="indore";
+        console.log(courseInformation);
+        console.log(deepcloning);
+
+        //  loop in Object using for in loop
+        for (let key in courseInformation) {
+        const value = courseInformation[key];
+        console.log(key);
+        console.log(value);
+        console.log(Object.prototype.toString.call(value));
+        if (Object.prototype.toString.call(value) === "[object Object]") {
+            for (let prop in value) {
+            console.log(prop);
+            console.log(value[prop]);
+            }
+        }
+        };
+        console.log("--------------------------");
+       
+
+        //object.assign
+
+        let object1={one:1,two:2};
+        let object2={three:3,four:4};
+        let test=Object.assign({},{one:1,two:2},{three:3,four:4});
+        console.log(test);
+
+
+    
+
+
+        
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

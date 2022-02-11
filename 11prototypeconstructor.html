@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // this is the ES6 approach using class pattern
+
+    class Employee {
+    constructor(fn, ln, a) {
+        this.firstname = fn;
+        this.lastName = ln;
+        this.age = a;
+    }
+    getAge() {
+        console.log(this.age);
+    }
+    getfullName() {
+        console.log(this.firstname + this.age);
+    }
+    }
+    let obj1 = new Employee("rishi", "shrivastava", "45");
+    console.log(obj1);
+    obj1.getAge();
+    obj1.getfullName();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
